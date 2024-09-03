@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:#FFFAA0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .game {
+            text-align: center;
+        }
+        .heading {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+            justify-content: center;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background:#CF9FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #bbb;
+            position: relative;
+        }
+        .mole {
+            width: 50px;
+            height: 50px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game">
+        <div class="heading">Whack-a-Mole</div>
+        <div class="score" id="score">Score: 0</div>
+        <div class="board" id="board"></div>
+    </div>
+
+    <script>
+        const board = document.getElementById('board');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+        let moleTimeout;
+
+        function createCell() {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            cell.addEventListener('click', () => {
+                if (cell.contains(document.querySelector('.mole'))) {
+                    score++;
+                    scoreDisplay.textContent = `Score: ${score}`;
+                    cell.removeChild(document.querySelector('.mole'));
+                }
+            });
+            return cell;
+        }
+
+        function placeMole() {
+            const cells = Array.from(document.querySelectorAll('.cell'));
+            const randomCell = cells[Math.floor(Math.random() * cells.length)];
+            if (randomCell.contains(document.querySelector('.mole'))) return;
+            const mole = document.createElement('div');
+            mole.className = 'mole';
+            randomCell.appendChild(mole);
+            moleTimeout = setTimeout(() => {
+                randomCell.removeChild(mole);
+                placeMole();
+            }, 1000);
+        }
+
+        function startGame() {
+            score = 0;
+            scoreDisplay.textContent = `Score: ${score}`;
+            board.innerHTML = '';
+            for (let i = 0; i < 9; i++) {
+                board.appendChild(createCell());
+            }
+            placeMole();
+        }
+
+        startGame();
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falling Objects</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color:#353935;
+        }
+        
+        .falling-object {
+            position: absolute;
+            width: 50px;
+            height: 100px;
+            border-radius: 0%;
+            background-color: red; /* Default color, will be overridden */
+        }
+        
+        @keyframes fall {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+        
+        .object-1 {
+            background-color: red;
+            animation: fall 1s linear infinite;
+        }
+        
+        .object-2 {
+            background-color: limegreen;
+            animation: fall 2s linear infinite;
+        }
+        
+        .object-3 {
+            background-color: blue;
+            animation: fall 3s linear infinite;
+        }
+        
+        .object-4 {
+            background-color: yellow;
+            animation: fall 1s linear infinite;
+        }
+        
+        .object-5 {
+            background-color: aqua;
+            animation: fall 3s linear infinite;
+        }
+    
+        .object-6 {
+            background-color: pink;
+            animation: fall 1s linear infinite;
+        }
+
+        .object-7 {
+            background-color: orange;
+            animation: fall 2s linear infinite;
+        }
+        .object-8 {
+            background-color: purple;
+            animation: fall 3s linear infinite;
+        }
+ 
+        
+        .falling-object:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .falling-object:nth-child(2) { left: 20%; animation-delay: 0s; }
+        .falling-object:nth-child(3) { left: 30%; animation-delay: 0s; }
+        .falling-object:nth-child(4) { left: 40%; animation-delay: 0s; }
+        .falling-object:nth-child(5) { left: 50%; animation-delay: 0s; }
+        .falling-object:nth-child(6) { left: 60%; animation-delay: 0s; }
+        .falling-object:nth-child(7) { left: 70%; animation-delay: 0s; }
+        .falling-object:nth-child(8) { left: 80%; animation-delay: 0s; }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="falling-object object-1"></div>
+    <div class="falling-object object-2"></div>
+    <div class="falling-object object-3"></div>
+    <div class="falling-object object-4"></div>
+    <div class="falling-object object-5"></div>
+    <div class="falling-object object-6"></div>
+    <div class="falling-object object-7"></div>
+    <div class="falling-object object-8"></div>
+</body>
+</html>

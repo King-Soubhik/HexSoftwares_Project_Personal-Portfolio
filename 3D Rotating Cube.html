@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rotating Cube</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #36454F;
+            perspective: 1000px; /* Provides a perspective effect for the 3D effect */
+        }
+
+        .container {
+            position: relative;
+            width: 150px; /* Set to cube width */
+            height: 150px; /* Set to cube height */
+        }
+
+        .cube {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            animation: rotate1 5s infinite linear;
+            transform-origin: center; /* Ensure rotation is centered */
+            left: 50%; /* Center horizontally */
+            top: 50%; /* Center vertically */
+            margin-left: -75px; /* Half of cube width */
+            margin-top: -75px; /* Half of cube height */
+        }
+
+        .face {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Position each face of the cube */
+        .face:nth-child(1) { background-color: #ff0000; transform: rotateY(0deg) translateZ(75px); }
+        .face:nth-child(2) { background-color: #00ff00; transform: rotateY(90deg) translateZ(75px); }
+        .face:nth-child(3) { background-color: #0000ff; transform: rotateY(180deg) translateZ(75px); }
+        .face:nth-child(4) { background-color: #ffff00; transform: rotateY(-90deg) translateZ(75px); }
+        .face:nth-child(5) { background-color: blue; transform: rotateX(90deg) translateZ(75px); }
+        .face:nth-child(6) { background-color: #00ffff; transform: rotateX(-90deg) translateZ(75px); }
+
+        @keyframes rotate1 {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cube">
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+        </div>
+    </div>
+</body>
+</html>
